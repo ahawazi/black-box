@@ -2,6 +2,9 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\UserResource;
+use Awcodes\Overlook\OverlookPlugin;
+use Awcodes\Overlook\Widgets\OverlookWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -55,7 +58,26 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugins([
-                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
+
+                OverlookPlugin::make()
+                    ->includes([
+                        UserResource::class,
+                    ])
+                    ->sort(2)
+                    ->columns([
+                        'default' => 1,
+                        'sm' => 2,
+                        'md' => 3,
+                        'lg' => 4,
+                        'xl' => 6,
+                        '2xl' => null,
+                    ]),
+
+            ])
+            ->widgets([
+                Widgets\AccountWidget::class,
+                OverlookWidget::class,
             ]);
     }
 }
