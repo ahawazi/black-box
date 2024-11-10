@@ -11,6 +11,7 @@
 - [Jalali](https://filamentphp.com/plugins/mokhosh-jalali) For showing jalali date.
 - [Overlook](https://v2.filamentphp.com/plugins/overlook) For showing an overview of app models in the admin panel.
 - [Blade tabler icons](https://github.com/anodyne/blade-tabler-icons) For extra icons.
+- [Blade tabler icons](https://tabler.io/icons) For extra icons.
 - [Hero icons](https://heroicons.com/) For extra icons.
 - [Wireui](https://wireui.dev/) For components.
 
