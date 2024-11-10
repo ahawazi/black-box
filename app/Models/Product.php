@@ -10,9 +10,14 @@ class Product extends Model
     /** @use HasFactory<\Database\Factories\ProductFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'price',
-    ];
+    protected $guard_name = "web";
+
+    public $guarded = [];
+
+
+    // protected $fillable = [
+    //     'title',
+    //     'price',
+    // ];
 
 }
