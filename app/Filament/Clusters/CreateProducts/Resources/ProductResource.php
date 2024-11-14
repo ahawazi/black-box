@@ -5,11 +5,14 @@ namespace App\Filament\Clusters\CreateProducts\Resources;
 use App\Filament\Clusters\CreateProducts;
 use App\Filament\Clusters\CreateProducts\Resources\ProductResource\Pages;
 use App\Filament\Clusters\CreateProducts\Resources\ProductResource\RelationManagers;
+use App\Models\Category;
 use App\Models\Product;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -32,6 +35,11 @@ class ProductResource extends Resource
                     ->required()
                     ->numeric()
                     ->prefixIcon('tabler-currency-iranian-rial'),
+                Select::make('category')
+                    ->label('Category')
+                    ->options(Category::all()->pluck('title', 'id'))
+                    ->searchable()
+                    ->required(),
             ]);
     }
 
@@ -43,6 +51,10 @@ class ProductResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('price')
                     ->icon('tabler-currency-iranian-rial')
+                    ->sortable(),
+                TextColumn::make('category.title')
+                    ->label('category')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
