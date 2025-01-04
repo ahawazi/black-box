@@ -21,7 +21,8 @@ class ProductFactory extends Factory
             'title' => fake()->randomElement(['قهوه', 'ماسالا', 'موکا', 'لته', 'سیگار', 'ادامس']),
             'price' => fake()->numberBetween(100000, 1000000),
             // 'category_id' => Category::all()->id,
-            'category_id' => Category::inRandomOrder()->first()->id,
+            // 'category_id' => Category::inRandomOrder()->first()->id,
+            'category_id' => Category::factory()->create()->inRandomOrder()->first()->id,
         ];
     }
 }
